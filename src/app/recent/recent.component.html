@@ -1,0 +1,217 @@
+<main class="flex flex-col items-center w-screen min-h-screen bg-gray-100">
+
+  <!-- Page Header -->
+  <header class="w-full p-6 text-white bg-blue-600 shadow-lg">
+    <div class="flex items-center justify-between mx-auto max-w-7xl">
+      <div class="text-2xl font-semibold">Learning Platform - Data Overview</div>
+      <div class="flex items-center space-x-6">
+        <button class="px-4 py-2 transition bg-blue-700 rounded-lg hover:bg-blue-800">Notifications</button>
+        <button class="px-4 py-2 transition bg-blue-700 rounded-lg hover:bg-blue-800">Settings</button>
+        <div class="flex items-center space-x-2">
+          <img src="path-to-avatar.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <span>Welcome, John</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="p-6 py-12 mx-auto space-y-8 max-w-7xl">
+
+    <!-- Courses Section -->
+    <section>
+      <h2 class="mb-6 text-3xl font-semibold text-gray-800">Courses</h2>
+      <div class="p-6 overflow-x-auto bg-white rounded-lg shadow-lg">
+        <table class="min-w-full table-auto">
+          <thead>
+            <tr class="border-b">
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Course Name</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Description</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Instructor</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Enrolled Students</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Schedule</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-4 py-2">JavaScript Basics</td>
+              <td class="px-4 py-2">Learn the fundamentals of JavaScript programming.</td>
+              <td class="px-4 py-2">Jane Doe</td>
+              <td class="px-4 py-2">120</td>
+              <td class="px-4 py-2">Mon & Wed, 10:00 AM - 12:00 PM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Advanced React</td>
+              <td class="px-4 py-2">Master React's advanced concepts and hooks.</td>
+              <td class="px-4 py-2">John Smith</td>
+              <td class="px-4 py-2">75</td>
+              <td class="px-4 py-2">Tue & Thu, 1:00 PM - 3:00 PM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Python for Data Science</td>
+              <td class="px-4 py-2">Dive into data science using Python libraries.</td>
+              <td class="px-4 py-2">Alice Brown</td>
+              <td class="px-4 py-2">50</td>
+              <td class="px-4 py-2">Mon & Fri, 9:00 AM - 11:00 AM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Students Section -->
+    <section>
+      <h2 class="mb-6 text-3xl font-semibold text-gray-800">Students</h2>
+      <div class="p-6 overflow-x-auto bg-white rounded-lg shadow-lg">
+        <table class="min-w-full table-auto">
+          <thead>
+            <tr class="border-b">
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Name</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Email</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Enrollment Status</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Courses Enrolled</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-4 py-2">Jane Doe</td>
+              <td class="px-4 py-2">janedoe&#64;example.com</td>
+              <td class="px-4 py-2 text-green-500">Enrolled</td>
+              <td class="px-4 py-2">JavaScript Basics, Python for Data Science</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">John Smith</td>
+              <td class="px-4 py-2">johnsmith&#64;example.com</td>
+              <td class="px-4 py-2 text-yellow-500">Pending</td>
+              <td class="px-4 py-2">Advanced React</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Alice Brown</td>
+              <td class="px-4 py-2">alicebrown&#64;example.com</td>
+              <td class="px-4 py-2 text-green-500">Enrolled</td>
+              <td class="px-4 py-2">Python for Data Science</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Study Schedules Section -->
+    <section>
+      <h2 class="mb-6 text-3xl font-semibold text-gray-800">Study Schedules</h2>
+      <div class="p-6 overflow-x-auto bg-white rounded-lg shadow-lg">
+        <table class="min-w-full table-auto">
+          <thead>
+            <tr class="border-b">
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Course</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Day</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Time</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Instructor</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Classroom</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-4 py-2">JavaScript Basics</td>
+              <td class="px-4 py-2">Mon & Wed</td>
+              <td class="px-4 py-2">10:00 AM - 12:00 PM</td>
+              <td class="px-4 py-2">Jane Doe</td>
+              <td class="px-4 py-2">Room 101</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Advanced React</td>
+              <td class="px-4 py-2">Tue & Thu</td>
+              <td class="px-4 py-2">1:00 PM - 3:00 PM</td>
+              <td class="px-4 py-2">John Smith</td>
+              <td class="px-4 py-2">Room 102</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Python for Data Science</td>
+              <td class="px-4 py-2">Mon & Fri</td>
+              <td class="px-4 py-2">9:00 AM - 11:00 AM</td>
+              <td class="px-4 py-2">Alice Brown</td>
+              <td class="px-4 py-2">Room 103</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section>
+      <h2 class="mb-6 text-3xl font-semibold text-gray-800">Instructors</h2>
+      <div class="p-6 overflow-x-auto bg-white rounded-lg shadow-lg">
+        <table class="min-w-full table-auto">
+          <thead>
+            <tr class="border-b">
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Instructor Name</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Expertise</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Courses Taught</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Available Hours</th>
+              <th class="px-4 py-2 text-sm text-left text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-4 py-2">Jane Doe</td>
+              <td class="px-4 py-2">JavaScript, Web Development</td>
+              <td class="px-4 py-2">JavaScript Basics, React Basics</td>
+              <td class="px-4 py-2">10 AM - 12 PM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">John Smith</td>
+              <td class="px-4 py-2">React, Frontend Development</td>
+              <td class="px-4 py-2">Advanced React</td>
+              <td class="px-4 py-2">1 PM - 3 PM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">Alice Brown</td>
+              <td class="px-4 py-2">Data Science, Python</td>
+              <td class="px-4 py-2">Python for Data Science</td>
+              <td class="px-4 py-2">9 AM - 11 AM</td>
+              <td class="px-4 py-2">
+                <button class="text-blue-600 hover:underline">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>

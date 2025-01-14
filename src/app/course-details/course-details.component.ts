@@ -4,6 +4,7 @@ import { Course } from '../../../utils/types';
 import fetchData from '../../../utils/fetchData';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { NgIcon } from '@ng-icons/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-course-details',
@@ -17,7 +18,8 @@ export class CourseDetailsComponent implements OnInit {
   isLoading: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class CourseDetailsComponent implements OnInit {
   async fetchCourseDetails(courseId: string | null): Promise<void> {
     if (courseId) {
       try {
-        const data = await fetchData(`/courses/${courseId}`,"GET",{},undefined,(isLoading:boolean)=>isLoading);
+        const data = await fetchData(`/courses/${courseId}`,"GET",undefined, this.cookieService.get("auth-token"),(isLoading:boolean)=>isLoading);
         this.course = data;
       } catch (error) {
         console.error('Error fetching course details', error);

@@ -7,6 +7,7 @@ import { bootstrapBookmark, bootstrapBookmarkFill } from '@ng-icons/bootstrap-ic
 import { courses } from '../../../utils/constants';
 import { Router } from '@angular/router';
 import fetchData from "../../../utils/fetchData"
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-courses',
@@ -22,7 +23,7 @@ export class CoursesComponent implements OnInit{
   setIsLoading(isLoading:boolean):void{
     this.isLoading = isLoading;
   }
-  constructor(themeService:ThemeService, private router: Router){
+  constructor(themeService:ThemeService, private router: Router,private cookieService:CookieService){
     this.isDark = themeService.checkIsDark()
   }
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class CoursesComponent implements OnInit{
   }
   async handleLoadingData(){
     try {
-      const request = await fetchData("/course","GET",undefined,undefined,(isLoading:boolean)=>this.setIsLoading(isLoading));
+      const request = await fetchData("/course","GET",undefined, this.cookieService.get("auth-token"),(isLoading:boolean)=>this.setIsLoading(isLoading));
       if(Array.isArray(request)){
         this.courses = request;
         console.log(this.courses);

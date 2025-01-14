@@ -12,6 +12,9 @@ import { TimeScheduleComponent } from './time-schedule/time-schedule.component';
 
 export const routes: Routes = [
   {
+    path: '',
+    component: HomeComponent
+  },{
     path: 'home',
     component: HomeComponent
   },

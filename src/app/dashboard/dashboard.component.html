@@ -1,77 +1,45 @@
-<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'" class="flex flex-col items-center w-screen min-h-screen">
-  <!-- Dashboard Header -->
-  <header [ngClass]="{ 'bg-blue-600': !isDark, 'bg-gray-900': isDark }" class="flex flex-row items-center justify-between w-full p-3 text-white shadow-lg">
-    <span>Welcome back {{ firstName }} {{ lastName }}</span>
-    <img [src]="userAvatar" alt="User Avatar" class="w-10 h-10 rounded-full" />
-  </header>
+<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+      class="flex flex-col items-center w-screen min-h-screen p-3">
 
-  <!-- Dashboard Content -->
-  <section class="p-6 py-12 mx-auto space-y-8 w-[clamp(75%,80%,95%)]">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-      <!-- Metrics Cards -->
-      <div [ngClass]="{ 'bg-white': !isDark, 'bg-gray-800': isDark }" class="flex flex-col flex-1 p-6 rounded-lg shadow-lg hover:shadow-2xl">
-        <h3 [ngClass]="{ 'text-gray-700': !isDark, 'text-white': isDark }" class="text-lg font-semibold">Total Enrollments</h3>
-        <div [ngClass]="{ 'text-blue-600': !isDark, 'text-blue-300': isDark }" class="mt-2 text-3xl font-bold">{{ coursesCount }}</div>
-        <p [ngClass]="{ 'text-gray-500': !isDark, 'text-gray-400': isDark }" class="mt-1 text-sm">+15% from last week</p>
+  <div *ngIf="isLoading" class="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="!isLoading && errorMessage" class="error-message">
+    <p class="text-3xl text-red-400">{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage">
+    <div class="dashboard-card">
+      <h3>Welcome, {{ firstName }} {{ lastName }}</h3>
+      <img [src]="userAvatar" alt="User Avatar" class="avatar">
+      <p>Email: {{ email }}</p>
+      <p>Role: {{ userRole }}</p>
+    </div>
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <h4>Courses</h4>
+        <p>{{ coursesCount }}</p>
       </div>
-
-      <div [ngClass]="{ 'bg-white': !isDark, 'bg-gray-800': isDark }" class="flex flex-col flex-1 p-6 rounded-lg shadow-lg hover:shadow-2xl">
-        <h3 [ngClass]="{ 'text-gray-700': !isDark, 'text-white': isDark }" class="text-lg font-semibold">Active Users</h3>
-        <div [ngClass]="{ 'text-green-600': !isDark, 'text-green-300': isDark }" class="mt-2 text-3xl font-bold">{{ usersCount }}</div>
-        <p [ngClass]="{ 'text-gray-500': !isDark, 'text-gray-400': isDark }" class="mt-1 text-sm">+10% from last week</p>
+      <div class="stat-card" *ngIf="userRole === 'ADMIN' || userRole === 'TEACHER'">
+        <h4>Users</h4>
+        <p>{{ usersCount }}</p>
       </div>
-
-      <div [ngClass]="{ 'bg-white': !isDark, 'bg-gray-800': isDark }" class="flex flex-col flex-1 p-6 rounded-lg shadow-lg hover:shadow-2xl">
-        <h3 [ngClass]="{ 'text-gray-700': !isDark, 'text-white': isDark }" class="text-lg font-semibold">Completed Courses</h3>
-        <div [ngClass]="{ 'text-orange-600': !isDark, 'text-orange-300': isDark }" class="mt-2 text-3xl font-bold">{{ coursesCount }}</div>
-        <p [ngClass]="{ 'text-gray-500': !isDark, 'text-gray-400': isDark }" class="mt-1 text-sm">+20% from last month</p>
+      <div class="stat-card">
+        <h4>Completed Courses</h4>
+        <p>{{ completedCoursesCount }}</p>
+      </div>
+      <div class="stat-card">
+        <h4>Time Schedules</h4>
+        <p>{{ timeSchedulesCount }}</p>
       </div>
     </div>
 
-    <!-- Recent Activity -->
-    <div [ngClass]="{ 'bg-white': !isDark, 'bg-gray-800': isDark }" class="p-6 rounded-lg shadow-lg hover:shadow-2xl">
-      <h3 [ngClass]="{ 'text-gray-800': !isDark, 'text-white': isDark }" class="mb-4 text-xl font-semibold">Recent Activity</h3>
-      <ul [ngClass]="{ 'text-gray-700': !isDark, 'text-gray-400': isDark }" class="space-y-4">
-        <li class="flex justify-between">
-          <span>New user registration</span>
-          <span class="text-sm text-gray-500">5 mins ago</span>
-        </li>
-        <li class="flex justify-between">
-          <span>Course completion by John Doe</span>
-          <span class="text-sm text-gray-500">30 mins ago</span>
-        </li>
-      </ul>
+    <div *ngIf="canModify()" class="admin-actions">
+      <button class="action-button" (click)="router.navigate(['/courses/manage'])">Manage Courses</button>
+      <button class="action-button" (click)="router.navigate(['/users/manage'])">Manage Users</button>
+      <button class="action-button" (click)="router.navigate(['/schedule/manage'])">Manage Time Schedules</button>
     </div>
-
-    <!-- Leaderboard -->
-    <div [ngClass]="{ 'bg-white': !isDark, 'bg-gray-800': isDark }" class="p-6 rounded-lg shadow-lg hover:shadow-2xl">
-      <h3 [ngClass]="{ 'text-gray-800': !isDark, 'text-white': isDark }" class="mb-4 text-xl font-semibold">Top Students</h3>
-      <table [ngClass]="{ 'text-gray-700': !isDark, 'text-gray-400': isDark }" class="w-full text-left">
-        <thead>
-          <tr>
-            <th class="px-4 py-2">Rank</th>
-            <th class="px-4 py-2">Name</th>
-            <th class="px-4 py-2">Completed Courses</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-2">1</td>
-            <td class="px-4 py-2">John Doe</td>
-            <td class="px-4 py-2">20</td>
-          </tr>
-          <tr>
-            <td class="px-4 py-2">2</td>
-            <td class="px-4 py-2">Jane Smith</td>
-            <td class="px-4 py-2">18</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer [ngClass]="{ 'bg-gray-800': isDark, 'bg-gray-200': !isDark }" class="w-full py-6 text-center text-white">
-    <p>© 2025 Learning Platform. All rights reserved.</p>
-  </footer>
+  </div>
 </main>

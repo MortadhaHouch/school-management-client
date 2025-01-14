@@ -16,7 +16,9 @@
     </div>
   </div>
   </div>
-
+  <div *ngIf="errorMessage && !isLoading">
+    <p class="text-3xl text-red-400">{{errorMessage}}</p>
+  </div>
   <div *ngIf="!isLoading && timeSchedules.length === 0" class="no-data">
     <div class="flex flex-col items-center justify-center w-full p-5 text-center bg-white border border-gray-300 shadow-lg rounded-xl dark:bg-gray-800 dark:border-gray-700">
       <img src="assets/images/not-found.jpg"  class="w-[clamp(300px,33%,450px)] mb-6" alt="No schedules Found">

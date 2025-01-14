@@ -1,94 +1,69 @@
-<main class="min-h-screen bg-gray-50 py-16">
+<main [class]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'" class="flex flex-col items-center w-screen min-h-screen">
   <section class="w-[clamp(320px,80%,1200px)] mx-auto px-6 flex flex-col items-center gap-12">
 
     <!-- About Us Section -->
     <div class="text-center">
-      <h2 class="text-4xl font-semibold text-blue-900 mb-4">About Us</h2>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+      <h2 [class]="isDark ? 'text-blue-300' : 'text-blue-900'" class="mb-4 text-4xl font-semibold">
+        About Us
+      </h2>
+      <p [class]="isDark ? 'text-gray-300' : 'text-gray-700'" class="max-w-2xl mx-auto text-lg">
         We are a passionate team dedicated to providing top-notch solutions for our clients. With years of experience in the industry, we specialize in building innovative, user-friendly platforms that empower businesses to grow and succeed.
       </p>
     </div>
 
     <!-- Vision Section -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
       <div class="w-full md:w-1/2">
-        <h3 class="text-3xl font-semibold text-blue-900 mb-4">Our Vision</h3>
-        <p class="text-lg text-gray-700">
-          Our vision is to become a leader in providing innovative solutions that improve the way businesses and individuals interact with technology. We aim to create lasting impact through continuous learning, innovation, and excellence in everything we do.
+        <h3 [class]="isDark ? 'text-blue-300' : 'text-blue-900'" class="mb-4 text-3xl font-semibold">
+          Our Vision
+        </h3>
+        <p [class]="isDark ? 'text-gray-300' : 'text-gray-700'" class="text-lg">
+          Our vision is to become a global leader in delivering innovative and transformative solutions that redefine how businesses and individuals interact with technology. We strive to bridge the gap between complexity and simplicity by developing cutting-edge tools and services that are intuitive, efficient, and impactful. Our commitment is to empower organizations to achieve greater productivity and success while enriching the everyday experiences of individuals through seamless technological integration. By fostering a culture of continuous innovation, sustainability, and excellence, we aim to shape a future where technology serves as a catalyst for positive change and limitless possibilities.
         </p>
       </div>
-      <div class="w-full md:w-1/2">
-        <img src="path/to/vision-image.jpg" alt="Vision" class="rounded-lg shadow-lg w-full object-cover">
+      <div class=" md:w-1/2 w-[clamp(300px,30%,450px)]">
+        <img src="assets/images/vision.webp" alt="Vision" class="object-cover w-full rounded-lg shadow-lg">
       </div>
     </div>
 
     <!-- Values Section -->
-    <div class="w-full flex flex-col items-center gap-8">
-      <h3 class="text-3xl font-semibold text-blue-900 mb-4">Our Values</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg">
+      <h3 [class]="isDark ? 'text-blue-300' : 'text-blue-900'" class="mb-4 text-3xl font-semibold">
+        Our Values
+      </h3>
+      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
         <div class="text-center">
-          <h4 class="text-xl font-semibold text-blue-700">Integrity</h4>
-          <p class="text-gray-600">
+          <h4 [class]="isDark ? 'text-blue-200' : 'text-blue-700'" class="text-xl font-semibold">Integrity</h4>
+          <p [class]="isDark ? 'text-gray-400' : 'text-gray-600'">
             We adhere to the highest standards of honesty and transparency in all our interactions.
           </p>
         </div>
         <div class="text-center">
-          <h4 class="text-xl font-semibold text-blue-700">Innovation</h4>
-          <p class="text-gray-600">
+          <h4 [class]="isDark ? 'text-blue-200' : 'text-blue-700'" class="text-xl font-semibold">Innovation</h4>
+          <p [class]="isDark ? 'text-gray-400' : 'text-gray-600'">
             We constantly seek new ways to improve and push the boundaries of what is possible.
           </p>
         </div>
         <div class="text-center">
-          <h4 class="text-xl font-semibold text-blue-700">Customer-Centricity</h4>
-          <p class="text-gray-600">
+          <h4 [class]="isDark ? 'text-blue-200' : 'text-blue-700'" class="text-xl font-semibold">Customer-Centricity</h4>
+          <p [class]="isDark ? 'text-gray-400' : 'text-gray-600'">
             Our customers' success is our top priority, and we strive to exceed their expectations.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- History Section -->
-    <div class="text-center">
-      <h3 class="text-3xl font-semibold text-blue-900 mb-4">Our History</h3>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-        Founded in 2010, we started with a small team of passionate individuals who believed in the power of technology to transform businesses. Over the years, we’ve expanded our reach and now serve hundreds of clients worldwide. Our journey has been marked by innovation, growth, and a relentless focus on quality.
-      </p>
-    </div>
-
-    <!-- Team Section -->
-    <div class="w-full">
-      <h3 class="text-3xl font-semibold text-blue-900 text-center mb-8">Meet Our Team</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Team Member 1 -->
-        <div class="flex flex-col items-center text-center">
-          <img src="path/to/team-member1.jpg" alt="Team Member 1" class="w-32 h-32 rounded-full mb-4 object-cover">
-          <h4 class="text-xl font-semibold text-blue-800">John Doe</h4>
-          <p class="text-gray-600">CEO & Founder</p>
-        </div>
-        <!-- Team Member 2 -->
-        <div class="flex flex-col items-center text-center">
-          <img src="path/to/team-member2.jpg" alt="Team Member 2" class="w-32 h-32 rounded-full mb-4 object-cover">
-          <h4 class="text-xl font-semibold text-blue-800">Jane Smith</h4>
-          <p class="text-gray-600">CTO</p>
-        </div>
-        <!-- Team Member 3 -->
-        <div class="flex flex-col items-center text-center">
-          <img src="path/to/team-member3.jpg" alt="Team Member 3" class="w-32 h-32 rounded-full mb-4 object-cover">
-          <h4 class="text-xl font-semibold text-blue-800">Emily Davis</h4>
-          <p class="text-gray-600">Lead Designer</p>
-        </div>
-      </div>
-    </div>
-
     <!-- Contact Section -->
-    <div class="w-full bg-blue-50 py-8 px-4 rounded-lg">
-      <h3 class="text-3xl font-semibold text-blue-900 text-center mb-4">Get in Touch</h3>
-      <p class="text-lg text-gray-700 text-center mb-6">
+    <div [class]="isDark ? 'bg-blue-950' : 'bg-blue-50'" class="w-full px-4 py-8 rounded-lg">
+      <h3 [class]="isDark ? 'text-blue-300' : 'text-blue-900'" class="mb-4 text-3xl font-semibold text-center">
+        Get in Touch
+      </h3>
+      <p [class]="isDark ? 'text-gray-300' : 'text-gray-700'" class="mb-6 text-lg text-center">
         We’d love to hear from you! Whether you have a question, want to collaborate, or need assistance, feel free to contact us.
       </p>
       <div class="flex justify-center gap-8">
-        <a href="mailto:info@company.com" class="text-blue-600 hover:text-blue-700 text-lg">Email Us</a>
-        <a href="tel:+1234567890" class="text-blue-600 hover:text-blue-700 text-lg">Call Us</a>
+        <a href="mailto:info@company.com" [class]="isDark ? 'text-blue-400 hover:text-blue-500' : 'text-blue-600 hover:text-blue-700'" class="text-lg">Email Us</a>
+        <a href="tel:+1234567890" [class]="isDark ? 'text-blue-400 hover:text-blue-500' : 'text-blue-600 hover:text-blue-700'" class="text-lg">Call Us</a>
       </div>
     </div>
 

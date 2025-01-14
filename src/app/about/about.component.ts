@@ -1,3 +1,4 @@
+import { ThemeService } from './../services/theme.service';
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -15,9 +16,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class AboutComponent implements OnInit {
-  teamMembers:{name:string,role:string,image:string}[] = [];
+  teamMembers: { name: string; role: string; image: string }[] = [];
+  isDark: boolean = false;
+
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
+    this.isDark = this.themeService.checkIsDark();
+
     // Simulate data fetching
     setTimeout(() => {
       this.teamMembers = [

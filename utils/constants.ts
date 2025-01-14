@@ -40,20 +40,20 @@ const images = [
 
 // Expanded Example Data with Relationships
 const users: User[] = [
-  { id: 'u1', name: 'Alice', email: 'alice@example.com', role: 'student' },
-  { id: 'u2', name: 'Bob', email: 'bob@example.com', role: 'teacher' },
-  { id: 'u3', name: 'Charlie', email: 'charlie@example.com', role: 'admin' },
-  { id: 'u4', name: 'Diana', email: 'diana@example.com', role: 'student' },
-  { id: 'u5', name: 'Eve', email: 'eve@example.com', role: 'teacher' },
-  { id: 'u6', name: 'Frank', email: 'frank@example.com', role: 'student' },
-  { id: 'u7', name: 'Grace', email: 'grace@example.com', role: 'teacher' },
-  { id: 'u8', name: 'Hannah', email: 'hannah@example.com', role: 'student' },
-  { id: 'u9', name: 'Ian', email: 'ian@example.com', role: 'student' },
-  { id: 'u10', name: 'Jack', email: 'jack@example.com', role: 'student' },
-  { id: 'u11', name: 'Kate', email: 'kate@example.com', role: 'student' },
-  { id: 'u12', name: 'Leo', email: 'leo@example.com', role: 'teacher' },
-  { id: 'u13', name: 'Megan', email: 'megan@example.com', role: 'student' },
-  { id: 'u14', name: 'Nathan', email: 'nathan@example.com', role: 'admin' },
+  { id: 'u1', firstName: 'Alice',avatar:"",lastName:"", email: 'alice@example.com', role: 'STUDENT' },
+  { id: 'u2', firstName: 'Bob',avatar:"",lastName:"", email: 'bob@example.com', role: 'TEACHER' },
+  { id: 'u3', firstName: 'Charlie',avatar:"",lastName:"", email: 'charlie@example.com', role: 'ADMIN' },
+  { id: 'u4', firstName: 'Diana',avatar:"",lastName:"", email: 'diana@example.com', role: 'STUDENT' },
+  { id: 'u5', firstName: 'Eve',avatar:"",lastName:"", email: 'eve@example.com', role: 'TEACHER' },
+  { id: 'u6', firstName: 'Frank',avatar:"",lastName:"", email: 'frank@example.com', role: 'STUDENT' },
+  { id: 'u7', firstName: 'Grace',avatar:"",lastName:"", email: 'grace@example.com', role: 'TEACHER' },
+  { id: 'u8', firstName: 'Hannah',avatar:"",lastName:"", email: 'hannah@example.com', role: 'STUDENT' },
+  { id: 'u9', firstName: 'Ian',avatar:"",lastName:"", email: 'ian@example.com', role: 'STUDENT' },
+  { id: 'u10', firstName: 'Jack',avatar:"",lastName:"", email: 'jack@example.com', role: 'STUDENT' },
+  { id: 'u11', firstName: 'Kate',avatar:"",lastName:"", email: 'kate@example.com', role: 'STUDENT' },
+  { id: 'u12', firstName: 'Leo',avatar:"",lastName:"", email: 'leo@example.com', role: 'TEACHER' },
+  { id: 'u13', firstName: 'Megan',avatar:"",lastName:"", email: 'megan@example.com', role: 'STUDENT' },
+  { id: 'u14', firstName: 'Nathan',avatar:"",lastName:"", email: 'nathan@example.com', role: 'ADMIN' },
 ];
 
 const courses: Course[] = [
@@ -63,6 +63,8 @@ const courses: Course[] = [
     description: 'An introductory course on algebra and geometry.',
     teacherId: 'u2',
     studentIds: ['u1', 'u4', 'u6', 'u9', 'u11'],
+    instructor:users[Math.floor(users.length*Math.random())],
+    views:Math.floor(Math.random()*10)
   },
   {
     id: 'c2',
@@ -70,6 +72,8 @@ const courses: Course[] = [
     description: 'Fundamental concepts in physics.',
     teacherId: 'u5',
     studentIds: ['u1', 'u4', 'u8', 'u13'],
+    instructor:users[Math.floor(users.length*Math.random())],
+    views:Math.floor(Math.random()*10)
   },
   {
     id: 'c3',
@@ -77,6 +81,8 @@ const courses: Course[] = [
     description: 'Basic principles of chemistry.',
     teacherId: 'u7',
     studentIds: ['u6', 'u8', 'u10', 'u11', 'u13'],
+    instructor:users[Math.floor(users.length*Math.random())],
+    views:Math.floor(Math.random()*10)
   },
   {
     id: 'c4',
@@ -84,6 +90,8 @@ const courses: Course[] = [
     description: 'An overview of ancient civilizations.',
     teacherId: 'u12',
     studentIds: ['u4', 'u6', 'u9', 'u11'],
+    instructor:users[Math.floor(users.length*Math.random())],
+    views:Math.floor(Math.random()*10)
   },
   {
     id: 'c5',
@@ -91,6 +99,8 @@ const courses: Course[] = [
     description: 'Learn the art of writing efficient code.',
     teacherId: 'u5',
     studentIds: ['u1', 'u4', 'u6', 'u9'],
+    instructor:users[Math.floor(users.length*Math.random())],
+    views:Math.floor(Math.random()*10)
   },
 ];
 
@@ -126,4 +136,4 @@ const enrollments: Enrollment[] = [
   { id: 'e8', studentId: 'u8', courseId: 'c2', enrollmentDate: new Date('2025-01-08') },
 ];
 
-export { images }
+export { images,enrollments,courses,users,assignments,grades }

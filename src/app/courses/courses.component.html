@@ -1,0 +1,44 @@
+<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+      class="flex flex-col items-center w-screen min-h-screen px-4 py-10">
+
+  <section class="flex flex-col items-center justify-start w-full">
+    <ng-container *ngIf="courses.length > 0; else nothing">
+      <div *ngFor="let item of courses"
+           class="relative flex flex-col gap-3 p-5 transition-transform transform bg-white border border-gray-300 shadow-lg rounded-xl hover:scale-105 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700">
+
+        <div class="flex items-center gap-3">
+          <img [src]="item.instructor.avatar.length === 0 ? 'assets/images/user-profile.svg' : item.instructor.avatar"
+               alt="Instructor Avatar"
+               class="object-cover w-12 h-12 border border-gray-400 rounded-full">
+          <div>
+            <h3 class="text-lg font-semibold">{{ item.title }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ item.instructor.firstName }} {{ item.instructor.lastName }}</p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">{{ item.description }}</p>
+
+        <button class="absolute text-gray-500 transition-colors top-3 right-3 hover:text-yellow-400">
+          <ng-icon name="bootstrapBookmark"/>
+        </button>
+
+        <button (click)="viewDetails(item.id)"
+            class="px-4 py-2 mt-auto text-sm font-medium text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700">
+          View Details
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #nothing>
+      <div class="flex flex-col items-center justify-center w-full p-10 text-center bg-white border border-gray-300 shadow-lg rounded-xl dark:bg-gray-800 dark:border-gray-700">
+        <img src="assets/images/not-found.jpg"  class="w-[clamp(300px,33%,450px)] mb-6" alt="No Courses Found">
+        <h3 class="mb-4 text-2xl font-semibold text-gray-700 dark:text-gray-300">No courses found</h3>
+        <p class="mb-6 text-gray-500 dark:text-gray-400">It looks like there are no courses available at the moment. Please check back later or explore other sections of our platform.</p>
+        <button (click)="exploreOtherSections()"
+                class="px-4 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700">
+          Explore Other Sections
+        </button>
+      </div>
+    </ng-template>
+  </section>
+</main>

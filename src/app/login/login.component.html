@@ -1,20 +1,7 @@
-<main class="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-50">
-  <form action="" class="w-[clamp(320px,60%,450px)] flex flex-col justify-center items-center gap-6 backdrop-blur-md p-8 rounded-lg shadow-lg bg-white border border-gray-200">
+<main class="flex flex-col items-center justify-center w-screen min-h-screen">
+  <form action="" class="w-[clamp(320px,60%,450px)] flex flex-col justify-center items-center gap-6 backdrop-blur-md p-8 rounded-lg shadow-lg bg-white border border-gray-200" (submit)="handleSubmit($event)">
     <!-- Heading -->
     <h2 class="mb-6 text-3xl font-semibold text-blue-900">Login to EasyLearning</h2>
-
-    <!-- First Name Field (Optional for username) -->
-    <div class="flex flex-col items-start justify-start w-full gap-2">
-      <label for="first-name" class="text-sm text-gray-700">First Name</label>
-      <input
-        type="text"
-        name="first-name"
-        id="first-name"
-        class="border-solid border-[2px] border-gray-300 focus:ring-2 focus:ring-blue-600 p-4 rounded-md focus:outline-none w-full transition-all ease-in-out duration-200 hover:border-blue-400"
-        placeholder="Enter your first name"
-        aria-label="First Name"
-      >
-    </div>
 
     <!-- Email Field -->
     <div class="flex flex-col items-start justify-start w-full gap-2">
@@ -24,9 +11,11 @@
         name="email"
         id="email"
         class="border-solid border-[2px] border-gray-300 focus:ring-2 focus:ring-blue-600 p-4 rounded-md focus:outline-none w-full transition-all ease-in-out duration-200 hover:border-blue-400"
-        placeholder="Enter your email"
-        aria-label="Email address"
         required
+        [(ngModel)]="email"
+        minlength="8"
+        placeholder="enter your email address"
+        errorMessage="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character"
       >
     </div>
 
@@ -40,6 +29,7 @@
         class="border-solid border-[2px] border-gray-300 focus:ring-2 focus:ring-blue-600 p-4 rounded-md focus:outline-none w-full transition-all ease-in-out duration-200 hover:border-blue-400"
         placeholder="Enter your password"
         aria-label="Password"
+        [(ngModel)]="password"
         required
       >
     </div>

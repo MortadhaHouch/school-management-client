@@ -1,0 +1,27 @@
+<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+      class="flex flex-col items-center w-screen min-h-screen p-3">
+      <div *ngIf="isLoading" class="loading">
+        Loading...
+      </div>
+
+  <div *ngIf="!isLoading && timeSchedules.length > 0">
+    <div *ngFor="let timeSchedule of timeSchedules" class="time-schedule-card">
+    <h3>{{ timeSchedule.title }}</h3>
+    <p>{{ timeSchedule.description }}</p>
+    <p>Start Time: {{ timeSchedule.startTime || 'short' }}</p>
+    <p>End Time: {{ timeSchedule.endTime || 'short' }}</p>
+    <div *ngIf="canModify()" class="actions">
+      <button class="edit-button">Edit</button>
+      <button class="delete-button">Delete</button>
+    </div>
+  </div>
+  </div>
+
+  <div *ngIf="!isLoading && timeSchedules.length === 0" class="no-data">
+    <div class="flex flex-col items-center justify-center w-full p-5 text-center bg-white border border-gray-300 shadow-lg rounded-xl dark:bg-gray-800 dark:border-gray-700">
+      <img src="assets/images/not-found.jpg"  class="w-[clamp(300px,33%,450px)] mb-6" alt="No schedules Found">
+      <h3 class="mb-4 text-2xl font-semibold text-gray-700 dark:text-gray-300">No schedules found</h3>
+      <p class="mb-6 text-gray-500 dark:text-gray-400">It looks like there are no schedules available at the moment. Please check back later or explore other sections of our platform.</p>
+    </div>
+  </div>
+</main>

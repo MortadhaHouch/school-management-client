@@ -1,6 +1,7 @@
 .nav-link {
-  @apply text-white text-lg relative opacity-75 hover:opacity-100 transition-opacity duration-300;
+  @apply text-lg text-white transition-colors hover:text-blue-400;
 }
+
 
 .nav-link::before {
   content: '';

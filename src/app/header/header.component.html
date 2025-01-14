@@ -1,44 +1,70 @@
-<header class="sticky top-0 left-0 z-50 flex items-center justify-between w-screen px-6 py-4 shadow-md bg-slate-900/80 backdrop-blur-md">
+<header class="sticky top-0 left-0 z-50 flex items-center justify-between w-full px-4 py-3 shadow-md bg-slate-900/80 backdrop-blur-md md:px-6">
   <!-- Logo Section -->
-  <h1>
-    <a href="#" class="text-2xl font-bold tracking-wide text-white transition-colors hover:text-blue-400">
-      EasyLearning
-    </a>
-  </h1>
+  <div class="flex flex-row items-center justify-center gap-2">
+    <img src="EasyLearning.jpg" width="60" height="60" alt="">
+    <h1>
+      <a href="#" class="text-xl font-bold tracking-wide text-white transition-colors hover:text-blue-400 md:text-2xl">
+        EasyLearning
+      </a>
+    </h1>
+  </div>
 
-  <!-- Navigation Menu -->
-  <nav>
-    <ul class="flex items-center gap-6">
-      <li>
-        <a routerLink="/home" class="nav-link">Home</a>
-      </li>
-      <li>
-        <a routerLink="/about" class="nav-link">About</a>
-      </li>
-      <li>
-        <a routerLink="/login" class="nav-link">Login</a>
-      </li>
-      <li>
-        <a routerLink="/register" class="nav-link">Register</a>
-      </li>
+  <!-- Desktop Navigation Menu -->
+  <nav class="hidden md:flex">
+    <ul class="flex items-center gap-4 md:gap-6">
+      <li><a routerLink="/home" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="heroHome"/><span>Home</span></a></li>
+      <li><a routerLink="/about" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="heroInformationCircle"/><span>About</span></a></li>
+      <li><a routerLink="/courses" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapBook"/><span>courses</span></a></li>
+      <ng-container *ngIf="isLoggedIn; then loggedIn; else loggedOut">
+      </ng-container>
+      <ng-template #loggedIn>
+        <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
+        <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
+        <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
+      </ng-template>
+      <ng-template #loggedOut>
+        <li><a routerLink="/login" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionLogInOutline"/><span>Login</span></a></li>
+        <li><a routerLink="/register" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionEnterOutline"/><span>Register</span></a></li>
+      </ng-template>
+      <button (click)="toggleTheme()" class="p-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 dark:bg-gray-800 dark:text-black">
+        <ng-container *ngIf="isDark ; then dark;else light"></ng-container>
+        <ng-template #light>
+          <ng-icon name="bootstrapSun"/>
+        </ng-template>
+        <ng-template #dark>
+          <ng-icon name="bootstrapMoon"/>
+        </ng-template>
+        <ng-template></ng-template>
+      </button>
     </ul>
   </nav>
 
   <!-- Mobile Menu Button -->
   <button class="text-white md:hidden focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="toggleMenu()">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
 
   <!-- Mobile Navigation Menu -->
-  <nav *ngIf="isMenuOpen" class="absolute left-0 w-full shadow-md top-full bg-slate-900 md:hidden">
-    <ul class="flex flex-col items-center gap-4 py-4">
-      <li><a routerLink="/home" class="nav-link">Home</a></li>
-      <li><a routerLink="/about" class="nav-link">About</a></li>
-      <li><a routerLink="/login" class="nav-link">Login</a></li>
-      <li><a routerLink="/register" class="nav-link">Register</a></li>
+  <nav
+    *ngIf="isMenuOpen"
+    class="absolute left-0 right-0 w-full py-4 transition-transform transform shadow-md bg-slate-900 md:hidden top-full"
+  >
+  <ul class="flex flex-col items-start justify-start gap-2 p-3 md:gap-6">
+    <li><a routerLink="/home" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="heroHome"/><span>Home</span></a></li>
+    <li><a routerLink="/about" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="heroInformationCircle"/><span>About</span></a></li>
+    <li><a routerLink="/courses" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="heroInformationCircle"/><span>courses</span></a></li>
+    <ng-container *ngIf="isLoggedIn; then loggedInNav; else loggedOutNav"></ng-container>
+    <ng-template #loggedInNav>
+      <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
+      <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
+      <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
+    </ng-template>
+    <ng-template #loggedOutNav>
+      <li><a routerLink="/login" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionLogInOutline"/><span>Login</span></a></li>
+      <li><a routerLink="/register" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionEnterOutline"/><span>Register</span></a></li>
+    </ng-template>
     </ul>
   </nav>
 </header>

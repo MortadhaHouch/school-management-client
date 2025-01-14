@@ -1,11 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import fetchData from '../../../utils/fetchData';
+import { Course } from '../../../utils/types';
+import { ThemeService } from '../services/theme.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-recent',
-  imports: [],
   templateUrl: './recent.component.html',
-  styleUrl: './recent.component.css'
+  styleUrls: ['./recent.component.css'],
+  imports:[NgIf,NgFor]
 })
-export class RecentComponent {
+export class RecentComponent implements OnInit {
+  courses: Course[] = [];
+  userAvatar:string|null = localStorage.getItem('avatar');
+  firstName:string|null = localStorage.getItem('firstName');
+  lastName:string|null = localStorage.getItem('lastName');
+  email:string|null = localStorage.getItem('email');
+  isDark:boolean = false;
+  constructor(themeService:ThemeService){
+    this.isDark = themeService.checkIsDark()
+  }
+  ngOnInit(): void {
+    this.isDark = !!localStorage.getItem('theme');
+    this.fetchRecentCourses();
+  }
 
+  async fetchRecentCourses(): Promise<void> {
+    try {
+      this.courses = await fetchData('/course/recent',"GET",undefined,undefined,(isLoading:boolean)=>isLoading);
+    } catch (error) {
+      console.error('Error fetching recent courses', error);
+    }
+  }
 }

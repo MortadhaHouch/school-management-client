@@ -1,0 +1,59 @@
+<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+      class="flex flex-col items-center w-screen min-h-screen px-4 py-10">
+
+  <section class="w-full max-w-4xl p-8 bg-white border border-gray-200 shadow-xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
+
+    <!-- Course Title -->
+    <h2 class="text-3xl font-extrabold text-gray-800 dark:text-gray-100">
+      {{ course?.title }}
+    </h2>
+
+    <!-- Course Description -->
+    <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+      {{ course?.description }}
+    </p>
+
+    <!-- Instructor Info -->
+    <div class="flex items-center p-5 mt-8 shadow-sm bg-gray-50 dark:bg-gray-700 rounded-xl">
+      <img [src]="course?.instructor?.avatar || 'assets/images/user-profile.svg'"
+           alt="Instructor Avatar"
+           class="object-cover w-16 h-16 border-2 border-gray-300 rounded-full dark:border-gray-500">
+      <div class="ml-4">
+        <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-100">
+          {{ course?.instructor?.firstName }} {{ course?.instructor?.lastName }}
+        </h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          {{ course?.instructor?.email }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="mt-8">
+      <h3 class="mb-3 text-xl font-semibold text-gray-800 dark:text-gray-100">
+        📚 Resources
+      </h3>
+      <ng-container *ngIf="course?.resources?.length===0; then nothing"></ng-container>
+      <ng-template #content>
+        <ul class="space-y-2">
+          <li *ngFor="let resource of course?.resources"
+          class="flex items-center gap-2 text-gray-700 transition-colors dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+          <ng-icon name="file-text" class="text-blue-500"></ng-icon>
+          <span>{{ resource }}</span>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template #nothing>
+      No resources available
+    </ng-template>
+    </div>
+
+    <!-- Back Button -->
+    <button (click)="goBack()"
+            class="flex items-center gap-2 px-6 py-3 mt-8 text-white transition-transform transform bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 hover:scale-105">
+      <ng-icon name="arrow-left"></ng-icon>
+      Back to Courses
+    </button>
+
+  </section>
+</main>

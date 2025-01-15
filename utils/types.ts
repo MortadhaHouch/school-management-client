@@ -58,10 +58,17 @@ export interface AccessType {
   isVerified:boolean;
 }
 export interface TimeSchedule {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   startTime: Date;
   endTime: Date;
   createdBy: string; // User ID
+}
+export interface Room {
+  id: string;
+  name: string;
+  capacity: number;
+  status: boolean;
+  course: string;
 }

@@ -11,19 +11,41 @@
   color: red;
 }
 
-.time-schedule-card {
+.rooms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 2em;
+}
+
+.room-card {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  margin: 16px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-.time-schedule-card h3 {
+.room-card:hover {
+  transform: translateY(-5px);
+}
+
+.room-title {
   margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.room-detail {
+  margin: 8px 0;
+  color: #555;
 }
 
 .actions {
@@ -38,6 +60,7 @@
   margin-right: 8px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .delete-button {
@@ -45,26 +68,20 @@
 }
 
 .edit-button:hover, .delete-button:hover {
-  opacity: 0.8;
+  background-color: #0056b3;
 }
 
-.extra-data {
-  margin-top: 16px;
-  font-size: 0.9em;
-  color: #555;
+.delete-button:hover {
+  background-color: #c82333;
 }
 
 .no-data {
   text-align: center;
   font-size: 1.5em;
   margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.add-schedule {
+.add-room {
   margin-top: 32px;
   text-align: center;
 }
@@ -72,14 +89,4 @@
 .add-button {
   background-color: #28a745;
   color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-}
-
-.add-button:hover {
-  background-color: #218838;
 }

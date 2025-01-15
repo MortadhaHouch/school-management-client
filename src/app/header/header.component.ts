@@ -25,17 +25,16 @@ export class HeaderComponent {
   isMenuOpen: boolean = false;
   authService:AuthService = new AuthService();
   isLoggedIn:boolean = this.authService.isLoggedIn();
-  themeService:ThemeService = new ThemeService();
-  isDark:boolean = this.themeService.checkIsDark();
   isLoading:boolean = false;
+  isDark:boolean = false;
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
   toggleTheme(){
     this.themeService.toggleTheme();
   }
-  constructor(private cookieService:CookieService,private router:Router){
-
+  constructor(private cookieService:CookieService,private router:Router,private themeService:ThemeService){
+    this.isDark = this.themeService.checkIsDark();
   }
   async logout(){
     try{

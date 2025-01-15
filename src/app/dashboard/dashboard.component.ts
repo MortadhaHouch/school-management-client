@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
       this.completedCoursesCount = completedCoursesData.count;
       this.timeSchedulesCount = timeSchedulesData.count;
 
-      if (this.userRole === 'admin' || this.userRole === 'teacher') {
+      if (this.userRole === 'ADMIN' || this.userRole === 'TEACHER') {
         const usersData = await fetchData('/user/users/count', 'GET', {}, this.cookieService.get("auth-token"), (isLoading: boolean) => this.isLoading = isLoading);
         this.usersCount = usersData.count;
       }
@@ -59,6 +59,6 @@ export class DashboardComponent implements OnInit {
   }
 
   canModify(): boolean {
-    return this.userRole === 'admin';
+    return this.userRole === 'ADMIN';
   }
 }

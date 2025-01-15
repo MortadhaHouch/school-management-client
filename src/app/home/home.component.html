@@ -20,18 +20,18 @@
     <p class="max-w-2xl text-lg text-center text-gray-600">
       Our platform is designed to make your learning experience seamless and interactive. Discover a wide range of courses and resources to boost your skills.
     </p>
-    <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg">
+    <div class="flex flex-row flex-wrap items-center justify-center gap-2">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[350px]">
         <img src="assets/images/interactive learning.jpg" alt="Feature 1" class="object-cover w-full h-[60%]">
         <h3 class="mb-2 text-2xl font-semibold text-gray-300">Interactive Learning</h3>
         <p class="text-gray-600">Our courses are designed to provide hands-on, interactive learning experiences that ensure maximum engagement and retention.</p>
       </div>
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[350px]">
         <img src="assets/images/Expert-Instructors.jpg" alt="Feature 2" class="object-cover w-full h-[60%]">
         <h3 class="mb-2 text-2xl font-semibold text-gray-300">Expert Instructors</h3>
         <p class="text-gray-600">Learn from industry professionals and experts who are passionate about teaching and sharing their knowledge.</p>
       </div>
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="flex flex-col items-center justify-center gap-2 p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[350px]">
         <img src="assets/images/Resource-Management.jpeg" alt="Feature 3" class="object-cover w-full h-[60%]">
         <h3 class="mb-2 text-2xl font-semibold text-gray-300">Comprehensive Resources</h3>
         <p class="text-gray-600">Access a wide range of resources including lectures, tutorials, quizzes, and more to help you excel in your learning journey.</p>
@@ -45,20 +45,20 @@
     <p class="max-w-2xl mx-auto mb-8 text-lg text-center text-gray-600">
       Some of our most popular courses that are designed to take your career to the next level.
     </p>
-    <div class="grid w-full grid-cols-1 gap-8 p-3 sm:grid-cols-2 lg:grid-cols-3">
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg">
+    <div class="flex flex-row flex-wrap items-center justify-center gap-2">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[450px] flex flex-col justify-between items-center gap-2">
         <img src="assets/images/web-dev.png" alt="Course 1" class="object-cover w-full h-40 rounded-t-xl">
         <h3 class="mt-4 mb-2 text-2xl font-semibold text-gray-300">Advanced Web Development</h3>
         <p class="text-gray-600">Learn advanced techniques and best practices in web development, including React, Node.js, and more!</p>
         <button class="w-full px-6 py-3 mt-4 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700">Enroll Now</button>
       </div>
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[450px] flex flex-col justify-between items-center gap-2">
         <img src="assets/images/data-science.jpg" alt="Course 2" class="object-cover w-full h-40 rounded-t-xl">
         <h3 class="mt-4 mb-2 text-2xl font-semibold text-gray-300">Data Science for Beginners</h3>
         <p class="text-gray-600">Step into the world of data science and learn how to analyze and visualize data using Python and popular libraries.</p>
         <button class="w-full px-6 py-3 mt-4 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700">Enroll Now</button>
       </div>
-      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg">
+      <div [class]="isDark ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'" class="p-6 rounded-lg shadow-lg w-[clamp(300px,30%,450px)] h-[450px] flex flex-col justify-between items-center gap-2">
         <img src="assets/images/machine-learning.jpg" alt="Course 3" class="object-cover w-full h-40 rounded-t-xl">
         <h3 class="mt-4 mb-2 text-2xl font-semibold text-gray-300">Machine Learning with TensorFlow</h3>
         <p class="text-gray-600">Master machine learning and build models using TensorFlow to solve real-world problems.</p>

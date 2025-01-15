@@ -1,0 +1,83 @@
+<main class="flex flex-col items-center w-screen min-h-screen p-3" [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'">
+
+  <div *ngIf="isLoading" class="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="!isLoading && errorMessage" class="error-message">
+    <p class="text-3xl text-red-400">{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && canModify()">
+    <section class="admin-section">
+      <h2 class="section-title">Manage Rooms</h2>
+      <div *ngIf="rooms.length > 0" class="rooms-container">
+        <div *ngFor="let room of rooms" class="room-card">
+          <h3 class="room-title">{{ room.name }}</h3>
+          <p class="room-detail">Capacity: {{ room.capacity }}</p>
+          <p class="room-detail">Status: <span [ngClass]="room.status ? 'text-green-500' : 'text-red-500'">{{ room.status ? 'Available' : 'Unavailable' }}</span></p>
+          <div class="actions">
+            <button class="edit-button" (click)="editRoom(room)">Edit</button>
+            <button class="delete-button" (click)="deleteRoom(room.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rooms.length === 0" class="no-data">
+        <p>No rooms found.</p>
+      </div>
+      <form (ngSubmit)="addRoom()" class="add-form">
+        <input type="text" [(ngModel)]="newRoom.name" name="name" placeholder="Room Name" required>
+        <input type="number" [(ngModel)]="newRoom.capacity" name="capacity" placeholder="Capacity" required>
+        <button type="submit" class="add-button">Add New Room</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2 class="section-title">Manage Time Schedules</h2>
+      <div *ngIf="timeSchedules.length > 0" class="time-schedules-container">
+        <div *ngFor="let timeSchedule of timeSchedules" class="time-schedule-card">
+          <h3 class="time-schedule-title">{{ timeSchedule.title }}</h3>
+          <p class="time-schedule-detail">{{ timeSchedule.description }}</p>
+          <p class="time-schedule-detail">Start Time: {{ timeSchedule.startTime || 'short' }}</p>
+          <p class="time-schedule-detail">End Time: {{ timeSchedule.endTime || 'short' }}</p>
+          <div class="actions">
+            <button class="edit-button" (click)="editTimeSchedule(timeSchedule)">Edit</button>
+            <button class="delete-button" (click)="deleteTimeSchedule(timeSchedule.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="timeSchedules.length === 0" class="no-data">
+        <p>No time schedules found.</p>
+      </div>
+      <form (ngSubmit)="addTimeSchedule()" class="add-form">
+        <input type="text" [(ngModel)]="newTimeSchedule.title" name="title" placeholder="Title" required>
+        <textarea [(ngModel)]="newTimeSchedule.description" name="description" placeholder="Description" required></textarea>
+        <input type="datetime-local" [(ngModel)]="newTimeSchedule.startTime" name="startTime" placeholder="Start Time" required>
+        <input type="datetime-local" [(ngModel)]="newTimeSchedule.endTime" name="endTime" placeholder="End Time" required>
+        <button type="submit" class="add-button">Add New Time Schedule</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <h2 class="section-title">Manage Courses</h2>
+      <div *ngIf="courses.length > 0" class="courses-container">
+        <div *ngFor="let course of courses" class="course-card">
+          <h3 class="course-title">{{ course.title }}</h3>
+          <p class="course-detail">{{ course.description }}</p>
+          <div class="actions">
+            <button class="edit-button" (click)="editCourse(course)">Edit</button>
+            <button class="delete-button" (click)="deleteCourse(course.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="courses.length === 0" class="no-data">
+        <p>No courses found.</p>
+      </div>
+      <form (ngSubmit)="addCourse()" class="add-form">
+        <input type="text" [(ngModel)]="newCourse.title" name="title" placeholder="Title" required>
+        <textarea [(ngModel)]="newCourse.description" name="description" placeholder="Description" required></textarea>
+        <button type="submit" class="add-button">Add New Course</button>
+      </form>
+    </section>
+  </div>
+</main>

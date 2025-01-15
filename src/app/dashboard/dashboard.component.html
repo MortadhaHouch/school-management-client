@@ -1,45 +1,53 @@
-<main [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
-      class="flex flex-col items-center w-screen min-h-screen p-3">
+<main
+  [ngClass]="isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'"
+  class="flex flex-col items-center w-screen min-h-screen p-6 sm:p-8 md:p-12">
 
-  <div *ngIf="isLoading" class="loading">
-    Loading...
+  <div *ngIf="isLoading" class="absolute top-0 left-0 flex items-center justify-center w-full h-full text-white bg-gray-700 bg-opacity-50 loading">
+    <span class="text-xl font-semibold">Loading...</span>
   </div>
 
-  <div *ngIf="!isLoading && errorMessage" class="error-message">
-    <p class="text-3xl text-red-400">{{ errorMessage }}</p>
+  <div *ngIf="!isLoading && errorMessage" class="w-full max-w-2xl p-4 mx-auto mt-6 bg-red-100 border border-red-400 rounded-lg shadow-md error-message">
+    <p class="text-3xl font-medium text-red-500">{{ errorMessage }}</p>
   </div>
 
-  <div *ngIf="!isLoading && !errorMessage">
-    <div class="dashboard-card">
-      <h3>Welcome, {{ firstName }} {{ lastName }}</h3>
-      <img [src]="userAvatar" alt="User Avatar" class="avatar">
-      <p>Email: {{ email }}</p>
-      <p>Role: {{ userRole }}</p>
+  <div *ngIf="!isLoading && !errorMessage" class="w-full max-w-4xl mx-auto mt-6 space-y-6">
+    <div class="p-6 rounded-lg shadow-md bg-slate-800 dashboard-card">
+      <h3 class="text-2xl font-semibold text-center">Welcome, {{ firstName }} {{ lastName }}</h3>
+      <div class="flex justify-center mt-4">
+        <img [src]="userAvatar" alt="User Avatar" class="w-32 h-32 border-4 border-gray-300 rounded-full shadow-lg avatar">
+      </div>
+      <p class="mt-2 text-lg text-center text-gray-500">Email: {{ email }}</p>
     </div>
 
-    <div class="dashboard-stats">
-      <div class="stat-card">
-        <h4>Courses</h4>
-        <p>{{ coursesCount }}</p>
+    <div class="flex flex-row flex-wrap items-center justify-center gap-2 p-2">
+      <div class="flex-1 p-6 text-center rounded-lg shadow-md bg-slate-800 stat-card">
+        <h4 class="text-xl font-medium text-gray-200">Courses</h4>
+        <p class="text-2xl font-semibold text-gray-600">{{ coursesCount || 0 }}</p>
       </div>
-      <div class="stat-card" *ngIf="userRole === 'ADMIN' || userRole === 'TEACHER'">
-        <h4>Users</h4>
-        <p>{{ usersCount }}</p>
+      <div *ngIf="userRole === 'ADMIN' || userRole === 'TEACHER'" class="p-6 text-center rounded-lg shadow-md bg-slate-800 stat-card">
+        <h4 class="text-xl font-medium text-gray-200">Users</h4>
+        <p class="text-2xl font-semibold text-gray-600">{{ usersCount || 0 }}</p>
       </div>
-      <div class="stat-card">
-        <h4>Completed Courses</h4>
-        <p>{{ completedCoursesCount }}</p>
+      <div class="flex-1 p-6 text-center rounded-lg shadow-md bg-slate-800 stat-card">
+        <h4 class="text-xl font-medium text-gray-200">Completed Courses</h4>
+        <p class="text-2xl font-semibold text-gray-600">{{ completedCoursesCount || 0 }}</p>
       </div>
-      <div class="stat-card">
-        <h4>Time Schedules</h4>
-        <p>{{ timeSchedulesCount }}</p>
+      <div class="flex-1 p-6 text-center rounded-lg shadow-md bg-slate-800 stat-card">
+        <h4 class="text-xl font-medium text-gray-200">Time Schedules</h4>
+        <p class="text-2xl font-semibold text-gray-600">{{ timeSchedulesCount || 0 }}</p>
       </div>
     </div>
 
-    <div *ngIf="canModify()" class="admin-actions">
-      <button class="action-button" (click)="router.navigate(['/courses/manage'])">Manage Courses</button>
-      <button class="action-button" (click)="router.navigate(['/users/manage'])">Manage Users</button>
-      <button class="action-button" (click)="router.navigate(['/schedule/manage'])">Manage Time Schedules</button>
+    <div *ngIf="canModify()" class="flex justify-center gap-6 mt-6 admin-actions">
+      <button class="px-4 py-2 font-medium text-white transition duration-300 ease-in-out transform bg-blue-500 rounded-lg shadow-md action-button hover:bg-slate-800 hover:scale-105">
+        Manage Courses
+      </button>
+      <button class="px-4 py-2 font-medium text-white transition duration-300 ease-in-out transform bg-green-500 rounded-lg shadow-md action-button hover:bg-green-600 hover:scale-105">
+        Manage Users
+      </button>
+      <button class="px-4 py-2 font-medium text-white transition duration-300 ease-in-out transform bg-purple-500 rounded-lg shadow-md action-button hover:bg-purple-600 hover:scale-105">
+        Manage Time Schedules
+      </button>
     </div>
   </div>
 </main>

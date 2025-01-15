@@ -21,7 +21,7 @@
         <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
         <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
         <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
-        <button (click)="logout()"><ng-icon name="ionLogOutOutline"/></button>
+        <button (click)="logout()" class="flex flex-row items-center justify-center p-2 bg-red-500 rounded-lg"><ng-icon name="ionLogOutOutline"/></button>
 
       </ng-template>
       <ng-template #loggedOut>
@@ -62,7 +62,7 @@
       <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
       <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
       <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
-      <li><a routerLink="/logout" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionLogOutOutline"/></a></li>
+      <button (click)="logout()" class="flex flex-row items-center justify-center p-2 bg-red-500 rounded-lg"><ng-icon name="ionLogOutOutline"/></button>
     </ng-template>
     <ng-template #loggedOutNav>
       <li><a routerLink="/login" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="ionLogInOutline"/><span>Login</span></a></li>

@@ -20,6 +20,7 @@ export class CoursesComponent implements OnInit{
   isDark:boolean = false;
   courses:Course[] = [];
   isLoading:boolean = false;
+  enrolledCourses:Course[] = [];
   setIsLoading(isLoading:boolean):void{
     this.isLoading = isLoading;
   }
@@ -34,6 +35,17 @@ export class CoursesComponent implements OnInit{
     try {
       const request = await fetchData("/course","GET",undefined, this.cookieService.get("auth-token"),(isLoading:boolean)=>this.setIsLoading(isLoading));
       if(Array.isArray(request)){
+        this.courses = request;
+        console.log(this.courses);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async fetchEnrolledCourses(){
+    try {
+      const request = await fetchData("/course/enrolled","GET",undefined, this.cookieService.get("auth-token"),(isLoading:boolean)=>this.setIsLoading(isLoading));
+      if(Array.isArray(request.enrolled)){
         this.courses = request;
         console.log(this.courses);
       }

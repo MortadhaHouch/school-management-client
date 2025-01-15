@@ -9,6 +9,8 @@ import { AuthGuard } from './services/auth.guard.spec';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { TimeScheduleComponent } from './time-schedule/time-schedule.component';
+import { RoomComponent } from './room/room.component';
+import { AdminManageComponent } from './admin-manage/admin-manage.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +47,15 @@ export const routes: Routes = [
     component: CourseDetailsComponent
   },{
     path: 'time-schedule',
-    component: TimeScheduleComponent
-  }
+    component: TimeScheduleComponent,
+    canActivate:[AuthGuard]
+  },{
+    path: 'room',
+    component: RoomComponent,
+    canActivate:[AuthGuard]
+  },{
+    path: 'admin',
+    component: AdminManageComponent,
+    canActivate:[AuthGuard]
+  },
 ];

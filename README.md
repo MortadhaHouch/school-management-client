@@ -24,10 +24,7 @@ The **School Management System** frontend is built with **Angular**, ensuring a 
 ### ⚙️ **Core Services**
 
 - **🔑 AuthService**: Manages user authentication, including login, registration, and session management.
-- **📘 CourseService**: Handles course-related operations such as fetching, creating, and enrolling.
-- **🏢 RoomService**: Manages room operations, including creating rooms and assigning courses.
-- **📅 ScheduleService**: Responsible for time schedule creation, updates, and deletions.
-- **👤 UserService**: Manages user profiles and role assignments.
+- **📘 ThemeService**: Handles theme toggling but for some misunderstood reasons it's unfortunately not working to be honest.
 - **🌐 fetchData**: A central service for making HTTP requests to the backend server.
 
 ### 💻 **Frontend Installation**

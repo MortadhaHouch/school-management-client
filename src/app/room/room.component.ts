@@ -48,7 +48,8 @@ export class RoomComponent implements OnInit {
   }
   async fetchRooms(): Promise<void> {
     try {
-      this.rooms = await fetchData('/room', 'GET', {}, this.cookieService.get("auth-token"), (isLoading: boolean) => this.isLoading = isLoading);
+      const data = await fetchData('/room', 'GET', {}, this.cookieService.get("auth-token"), (isLoading: boolean) => this.isLoading = isLoading);
+      this.rooms = data.rooms
     } catch (error) {
       console.error('Error fetching rooms', error);
       this.errorMessage = 'Error fetching rooms';
@@ -56,7 +57,7 @@ export class RoomComponent implements OnInit {
   }
 
   canModify(): boolean {
-    return this.userRole === 'admin';
+    return this.userRole === 'ADMIN';
   }
 
   async addRoom(): Promise<void> {
@@ -67,8 +68,10 @@ export class RoomComponent implements OnInit {
 
     try {
       const addedRoom = await fetchData('/room', 'POST', this.newRoom, this.cookieService.get("auth-token"), (isLoading: boolean) => this.isLoading = isLoading);
-      this.rooms.push(addedRoom);
-      this.newRoom = { id: '', name: '', capacity: 0, status: true, course: '' }; // Reset form
+      if(addedRoom.room){
+        this.rooms.push(addedRoom.room);
+        this.newRoom = { id: '', name: '', capacity: 0, status: true, course: '' }; // Reset form
+      }
     } catch (error) {
       console.error('Error adding room:', error);
       this.errorMessage = 'Error adding room';
@@ -91,10 +94,11 @@ export class RoomComponent implements OnInit {
     }
 
     try {
+      console.log(this.editRoomData);
       const updatedRoom = await fetchData(`/room/${this.editRoomData.id}`, 'PUT', this.editRoomData, this.cookieService.get("auth-token"), (isLoading: boolean) => this.isLoading = isLoading);
       const index = this.rooms.findIndex(r => r.id === this.editRoomData!.id);
       if (index !== -1) {
-        this.rooms[index] = updatedRoom;
+        this.rooms[index] = updatedRoom.updatedRoom;
       }
       this.editRoomData = null; // Reset edit form
     } catch (error) {

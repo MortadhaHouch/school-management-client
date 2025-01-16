@@ -20,6 +20,7 @@
       <ng-template #loggedIn>
         <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
         <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
+        <li><a routerLink="/room" class="flex flex-row items-center justify-center gap-2 nav-link"><span>room</span></a></li>
         <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
         <button (click)="logout()" class="flex flex-row items-center justify-center p-2 bg-red-500 rounded-lg"><ng-icon name="ionLogOutOutline"/></button>
 
@@ -60,6 +61,7 @@
     <ng-container *ngIf="isLoggedIn; then loggedInNav; else loggedOutNav"></ng-container>
     <ng-template #loggedInNav>
       <li><a routerLink="/recent" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="bootstrapClockHistory"/><span>recent</span></a></li>
+      <li><a routerLink="/room" class="flex flex-row items-center justify-center gap-2 nav-link"><span>room</span></a></li>
       <li><a routerLink="/dashboard" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matDashboardOutline"/><span>dashboard</span></a></li>
       <li><a routerLink="/time-schedule" class="flex flex-row items-center justify-center gap-2 nav-link"><ng-icon name="matAccessTimeFilledOutline"/><span>schedule</span></a></li>
       <button (click)="logout()" class="flex flex-row items-center justify-center p-2 bg-red-500 rounded-lg"><ng-icon name="ionLogOutOutline"/></button>

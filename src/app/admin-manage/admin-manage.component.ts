@@ -77,7 +77,7 @@ export class AdminManageComponent implements OnInit {
   }
 
   canModify(): boolean {
-    return this.userRole === 'admin';
+    return this.userRole === 'ADMIN';
   }
 
   async addRoom(): Promise<void> {

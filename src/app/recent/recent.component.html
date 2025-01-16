@@ -5,6 +5,58 @@
     <span>Welcome back {{ firstName }} {{ lastName }}</span>
     <img [src]="userAvatar" alt="User Avatar" class="w-10 h-10 rounded-full">
   </header>
+<!-- e-learning app UI using Angular and Tailwind CSS -->
+<div class="min-h-screen p-6 bg-gray-100">
+  <!-- Header -->
+  <header class="flex items-center justify-between py-4">
+    <h1 class="text-3xl font-bold text-indigo-600">EasyLearning</h1>
+  </header>
+
+  <!-- Categories Section -->
+  <section class="mt-8">
+    <h2 class="mb-4 text-xl font-semibold">Categories</h2>
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div class="p-4 bg-white rounded-lg shadow cursor-pointer hover:bg-indigo-50">Development</div>
+      <div class="p-4 bg-white rounded-lg shadow cursor-pointer hover:bg-indigo-50">Design</div>
+      <div class="p-4 bg-white rounded-lg shadow cursor-pointer hover:bg-indigo-50">Marketing</div>
+      <div class="p-4 bg-white rounded-lg shadow cursor-pointer hover:bg-indigo-50">Business</div>
+    </div>
+  </section>
+
+  <!-- Featured Courses Section -->
+  <section class="mt-12">
+    <h2 class="mb-4 text-xl font-semibold">Featured Courses</h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="overflow-hidden bg-white rounded-lg shadow-lg">
+        <img src="https://via.placeholder.com/300x150" alt="Course Image" class="w-full">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Angular for Beginners</h3>
+          <p class="text-sm text-gray-500">Learn the basics of Angular framework.</p>
+          <button *ngIf="canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">View</button>
+          <button *ngIf="!canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">enroll</button>
+        </div>
+      </div>
+      <div class="overflow-hidden bg-white rounded-lg shadow-lg">
+        <img src="https://via.placeholder.com/300x150" alt="Course Image" class="w-full">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Tailwind CSS Mastery</h3>
+          <p class="text-sm text-gray-500">Style modern websites with Tailwind CSS.</p>
+          <button *ngIf="canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">View</button>
+          <button *ngIf="!canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">enroll</button>
+        </div>
+      </div>
+      <div class="overflow-hidden bg-white rounded-lg shadow-lg">
+        <img src="https://via.placeholder.com/300x150" alt="Course Image" class="w-full">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Full-Stack Web Development</h3>
+          <p class="text-sm text-gray-500">Become a full-stack web developer.</p>
+          <button *ngIf="canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">View</button>
+          <button *ngIf="!canModify()" class="px-3 py-1 mt-2 text-white bg-indigo-600 rounded-md">enroll</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Main Content -->
   <section class="flex flex-col items-center justify-center max-w-[90%] px-4 py-10">

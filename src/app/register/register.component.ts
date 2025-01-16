@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import fileReading from '../../../utils/fileReading';
 import { NgIf } from '@angular/common';
 import { ThemeService } from '../services/theme.service';
-
+import sign from "jwt-encode"
+import environment from '../../../environment/environment';
 @Component({
   selector: 'app-register',
   imports: [FormsModule,NgIf],
@@ -55,11 +56,17 @@ export class RegisterComponent {
       );
 
       if (typeof(response.token) === "string" && jwtDecode<AccessType>(response.token).isVerified) {
-        this.cookieService.set("auth-token", response.token, this.cookieOptions);
         const userCoords = jwtDecode<AccessType>(response.token);
+        this.cookieService.set("auth-token",sign({
+          firstName:userCoords.firstName,
+          lastName:userCoords.lastName,
+          email:userCoords.email,
+        },environment.SECRET_KEY), this.cookieOptions);
         localStorage.setItem("firstName",userCoords.firstName);
         localStorage.setItem("lastName",userCoords.lastName);
         localStorage.setItem("email",userCoords.email);
+        localStorage.setItem("avatar",userCoords.avatar);
+        localStorage.setItem("isLoggedIn",JSON.stringify(userCoords.isLoggedIn));
         this.router?.navigate(["/dashboard"]);
       } else {
         alert("User is not verified. Please verify your email.");
